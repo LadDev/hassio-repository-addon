@@ -1,35 +1,20 @@
----
-name: Example Addon
-version: 0.0.1
-slug: example_client
-description: Fast, modern, secure OpenConnect tunnel (client)
-url: https://github.com/LadDev/addon-example
+# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
+name: Example add-on
+version: "1.2.0"
+slug: example
+description: Example add-on
+url: "https://github.com/LadDev/addon-example/tree/main/example"
 arch:
-  - aarch64
-  - amd64
   - armhf
   - armv7
+  - aarch64
+  - amd64
   - i386
-apparmor: true
-host_network: true
 init: false
-ports:
-  80/tcp: 80
-ports_description:
-  80/tcp: Addon client status API
-hassio_api: true
-privileged:
-  - NET_ADMIN
-devices:
-  - /dev/net/tun
 map:
-  - ssl:rw
+  - share:rw
 options:
-  server: "vpn-ch3.freedomvpn.world"
-  username: ""
-  password: ""
+  message: "Hello world..."
 schema:
-  log_level: list(trace|debug|info|notice|warning|error|fatal)?
-  server: str
-  username: str
-  password: password?
+  message: "str?"
+image: "ghcr.io/home-assistant/{arch}-addon-example"
